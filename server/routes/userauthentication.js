@@ -4,13 +4,9 @@ const router = express.Router();
 const con = require('../models/connection_create');
 const allQueries = require('../models/queries');
 const config = require('../config.json');
-const security = require('../security/securityFunctions');
 
 router.post('/', async function (req, res) {
   const { password, email } = req.body;
-
-  if (!security.isValidEmail(email) || !security.checkPassword(password))
-    return res.status(400).send('Email or password are not valid!');
 
   //Checking if the user exists when he is trying to log in
   try {
