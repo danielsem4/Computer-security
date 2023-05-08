@@ -8,6 +8,8 @@ router.post('/', async function (req, res) {
     req.body;
 
   const userExists = await allQueries.checkUserExists(email, con);
+  console.log(userExists);
+  if (userExists) return res.status(400).send('User already exists!');
 
   //Adding a user to the database
   try {
