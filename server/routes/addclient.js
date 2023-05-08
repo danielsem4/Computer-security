@@ -5,7 +5,7 @@ const con = require('../models/connection_create');
 const security = require('../security/securityFunctions');
 
 router.post('/', async function (req, res) {
-  const { city, email, first_name, last_name, phone_number } = req.body;
+  // const { city, email, first_name, last_name, phone_number } = req.body;
 
   if (!security.isValidEmail(email))
     return res.status(400).send('The email is not valid');
