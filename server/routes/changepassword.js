@@ -7,9 +7,6 @@ const security = require('../security/securityFunctions');
 router.post('/', async function (req, res) {
   const { email, old_password, new_password, verification_password } = req.body;
 
-  if (!security.checkPassword(new_password))
-    return res.status(400).send('The new password is not valid');
-
   //Checking if the new password equals to the verification password
   if (new_password !== verification_password)
     return res

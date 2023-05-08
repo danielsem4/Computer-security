@@ -34,8 +34,6 @@ router.post('/', async function (req, res) {
   const code = Math.floor(Math.random() * 1000000);
   const hashedValue = sha1(code);
   const { email } = req.body;
-  if (!security.isValidEmail(email))
-    return res.status(400).send('The email is not valid!');
 
   const userExists = await allQueries.checkUserExists(email, con);
 
